@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #d8eefe;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.gerenciabancaria.controllers.PageSaldo">
+   <children>
+      <Pane layoutX="27.0" layoutY="14.0" prefHeight="69.0" prefWidth="547.0" style="-fx-background-color: white; -fx-border-insets: 50;">
+         <effect>
+            <DropShadow radius="14.3975" spread="0.46" width="38.59">
+               <color>
+                  <Color opacity="0.4694656431674957" />
+               </color>
+            </DropShadow>
+         </effect>
+         <children>
+            <Label layoutX="28.0" prefHeight="69.0" prefWidth="199.0" text="Caixa Eletrônica" textFill="#094067">
+               <font>
+                  <Font name="Berlin Sans FB" size="22.0" />
+               </font>
+            </Label>
+            <Hyperlink fx:id="homeLink" layoutX="486.0" layoutY="19.0" onAction="#voltar" prefHeight="31.0" prefWidth="61.0" text="Home" textFill="#094067">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Hyperlink>
+         </children>
+      </Pane>
+      <TextArea fx:id="saldoArea" layoutX="179.0" layoutY="129.0" prefHeight="200.0" prefWidth="242.0">
+         <font>
+            <Font name="Agency FB" size="14.0" />
+         </font>
+         <effect>
+            <DropShadow height="75.22" radius="38.21" width="79.62">
+               <color>
+                  <Color opacity="0.6793892979621887" />
+               </color>
+            </DropShadow>
+         </effect>
+      </TextArea>
+      <CheckBox fx:id="checkSaldo" graphicTextGap="3.0" layoutX="243.0" layoutY="346.0" mnemonicParsing="false" onAction="#verSaldo" text="Mostrar Saldo" textAlignment="CENTER" textFill="#2f86c9">
+         <font>
+            <Font name="Bell MT" size="12.0" />
+         </font>
+         <effect>
+            <Glow />
+         </effect>
+      </CheckBox>
+   </children>
+</AnchorPane>

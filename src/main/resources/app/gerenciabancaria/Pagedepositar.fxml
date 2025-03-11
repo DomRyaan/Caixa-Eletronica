@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #d8eefe;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.gerenciabancaria.controllers.PageDeposito">
+   <children>
+      <Pane layoutX="18.0" layoutY="14.0" prefHeight="67.0" prefWidth="564.0" style="-fx-background-color: white; -fx-border-insets: 50;">
+         <effect>
+            <DropShadow radius="14.3975" spread="0.46" width="38.59">
+               <color>
+                  <Color opacity="0.4694656431674957" />
+               </color>
+            </DropShadow>
+         </effect>
+         <children>
+            <Label layoutX="28.0" prefHeight="69.0" prefWidth="199.0" text="Caixa Eletrônica" textFill="#094067">
+               <font>
+                  <Font name="Berlin Sans FB" size="22.0" />
+               </font>
+            </Label>
+            <Hyperlink fx:id="linkHome" layoutX="491.0" layoutY="22.0" onAction="#setLinkHome" text="Home" textFill="#094067">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Hyperlink>
+         </children>
+      </Pane>
+      <TextField fx:id="depositoField" layoutX="205.0" layoutY="152.0" prefHeight="48.0" prefWidth="169.0" promptText="Digite o valor do deposito!" />
+      <Label fx:id="lblMessagem" layoutX="179.0" layoutY="107.0" prefHeight="17.0" prefWidth="276.0" />
+      <Button fx:id="btnDeposita" layoutX="248.0" layoutY="232.0" mnemonicParsing="false" onAction="#depositar" prefHeight="48.0" prefWidth="84.0" style="-fx-background-color: #3da9fc;" text="Depositar" textFill="WHITE">
+         <font>
+            <Font name="Arial Black" size="12.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
