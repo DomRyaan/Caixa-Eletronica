@@ -5,6 +5,7 @@ module app.gerenciabancaria {
     requires javafx.graphics;
     requires javafx.base;
     requires java.desktop;
+    requires io.github.cdimascio.dotenv.java;
 
 
     exports app.gerenciabancaria.controllers to javafx.fxml;
