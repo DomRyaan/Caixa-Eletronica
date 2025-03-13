@@ -7,14 +7,13 @@ import io.github.cdimascio.dotenv.Dotenv;
 
 public class ConexaoBD {
     private Connection conn = null;
-    Dotenv dotenv = Dotenv.load();
-    private final String jbdcDriver = dotenv.get("JBDCDRIVER");
-    private final String prefixoBD = dotenv.get("PREFIXOBD");
-    private final String nomeHost = dotenv.get("NOMEHOST");
-    private final String porta = dotenv.get("PORTA");
-    private final String nomeBD = dotenv.get("NOMEBD");
-    private final String usuario = dotenv.get("USER");
-    private final String senha = dotenv.get("SENHA");
+    private final String jbdcDriver = "com.mysql.cj.jdbc.Driver";
+    private final String prefixoBD =  "jdbc:mysql://";
+    private final String nomeHost = "127.0.0.1";
+    private final String porta = "3306";
+    private final String nomeBD = "banco";
+    private final String usuario = "root";
+    private final String senha =  "rf06122004";
     private String url = null;
 
     public ConexaoBD(){

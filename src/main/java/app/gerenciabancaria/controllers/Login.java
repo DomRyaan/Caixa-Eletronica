@@ -13,8 +13,13 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.w3c.dom.Text;
-import javax.imageio.IIOException;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import app.gerenciabancaria.models.ConexaoBD;
 
 
 
@@ -36,8 +41,8 @@ public class Login {
 
 
     @FXML
-    public void criarConta(ActionEvent event) throws IOException {
-        if (nomeField.getText().isEmpty() || sobreField.getText().isEmpty() || cpfField.getText().isEmpty()){
+    public void autenticacao(ActionEvent event) throws IOException {
+        if (nomeField.getText().isEmpty() || sobreField.getText().isEmpty() || cpfField.getText().isEmpty()) {
             lblMessagem.setText("Por favor, preencha todos os campos!");
         }
 
@@ -45,17 +50,17 @@ public class Login {
         String sobrenome = sobreField.getText();
         String cpf = cpfField.getText();
 
-        contaNova = new Conta(nome, sobrenome, cpf, 0);
-        try{
-        if (contaNova != null){
-          entrar();
+        contaNova = new Conta(nome, sobrenome, cpf);
+
+        if(Conta.autenticar(contaNova)){
+
+            entrar();
         }else{
-            lblMessagem.setText("Erro ao criar conta! Tente novamente");
+            lblMessagem.setText("Autenticação Invalida!");
         }
-        }catch (Exception ex ){
-            System.out.println(ex);
+
         }
-    }
+
 
     @FXML
     public void entrar() throws IOException{
@@ -64,16 +69,16 @@ public class Login {
             Parent root = loader.load();
             Scene scene = new Scene(root);
 
-            Stage stage = (Stage) btnEntrar.getScene().getWindow();
             MainController homeController = loader.getController();
             homeController.contaLogado(contaNova);
 
+            Stage stage = (Stage) btnEntrar.getScene().getWindow();
+
             stage.setScene(scene);
             stage.show();
-        } catch (IIOException ex){
-            lblMessagem.setText("Erro ao entrar!");
-            System.out.println(ex);
+            } catch (Exception e) {
+                System.out.println("Deu esser erro: " + e);
+            }
         }
     }
 
-}

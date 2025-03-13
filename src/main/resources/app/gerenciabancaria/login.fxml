@@ -73,7 +73,7 @@
             <Font name="Arial Black" size="33.0" />
          </font>
       </Label>
-      <Button fx:id="btnEntrar" layoutX="260.0" layoutY="342.0" mnemonicParsing="false" onAction="#criarConta" style="-fx-background-color: #3da9fc;" text="Entrar" textFill="WHITE" />
+      <Button fx:id="btnEntrar" layoutX="260.0" layoutY="342.0" mnemonicParsing="false" onAction="#autenticacao" style="-fx-background-color: #3da9fc;" text="Entrar" textFill="WHITE" />
       <Label fx:id="lblMessagem" layoutX="188.0" layoutY="77.0" prefHeight="17.0" prefWidth="241.0" textFill="RED">
          <font>
             <Font name="System Bold" size="16.0" />

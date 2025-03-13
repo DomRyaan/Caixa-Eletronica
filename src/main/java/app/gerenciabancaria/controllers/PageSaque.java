@@ -49,18 +49,21 @@ public class PageSaque {
     }
 
     @FXML
-    public void sacar(Event event){
-        try {
-            double valor = Integer.parseInt(valorField.getText());
-             boolean sucesso = contanova.sacar(valor);
-            if (sucesso) {
-                lblMessagem.setText("Saque efetuado com sucesso! Você sacou: " + valor);
-            }else{
-                lblMessagem.setText("Saldo Insuficiente!");
+    public void sacar(Event event) {
+        double valor = Double.parseDouble(valorField.getText());
+        if (valor < 0) {
+            lblMessagem.setText("Digite um valor válido!");
+        } else {
+            try {
+                if (contanova.sacar(valor)) {
+                    lblMessagem.setText("Saque efetuado com sucesso! Você sacou: " + valor);
+                } else {
+                    lblMessagem.setText("Saldo Insuficiente!");
+                }
+            } catch (Exception ex) {
+                lblMessagem.setText("Error ao sacar, Tente novamente!");
+                System.out.println(ex);
             }
-        } catch (Exception ex){
-            lblMessagem.setText("Error ao sacar, Tente novamente!");
-            System.out.println(ex);
         }
     }
 

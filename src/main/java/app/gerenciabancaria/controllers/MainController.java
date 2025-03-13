@@ -8,7 +8,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Hyperlink;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -16,7 +15,7 @@ import java.io.IOException;
 public class MainController {
 
     @FXML
-    Conta contanova;
+    Conta contaNova;
     @FXML
     Button btnDepositar;
     @FXML
@@ -31,7 +30,7 @@ public class MainController {
 
     @FXML
     public void contaLogado(Conta conta){
-        contanova = conta;
+        contaNova = conta;
     }
 
     @FXML
@@ -42,7 +41,7 @@ public class MainController {
         Stage stage = (Stage) btnSaque.getScene().getWindow();
 
         PageSaque pageController = loader.getController();
-        pageController.contaLogado(contanova);
+        pageController.contaLogado(contaNova);
 
         stage.setScene(scene);
         stage.show();
@@ -54,10 +53,13 @@ public class MainController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/app/gerenciabancaria/Pagedepositar.fxml"));
             Parent root = loader.load();
             Scene scene = new Scene(root);
-            Stage stage = (Stage) btnDepositar.getScene().getWindow();
 
             PageDeposito pageController = loader.getController();
-            pageController.contaLogado(contanova);
+            pageController.contaLogado(contaNova);
+            
+            Stage stage = (Stage) btnDepositar.getScene().getWindow();
+
+
 
             stage.setScene(scene);
             stage.show();
@@ -74,7 +76,7 @@ public class MainController {
         Stage stage = (Stage) btnSaldo.getScene().getWindow();
 
         PageSaldo pageController = loader.getController();
-        pageController.contaLogado(contanova);
+        pageController.contaLogado(contaNova);
 
         stage.setScene(scene);
         stage.show();

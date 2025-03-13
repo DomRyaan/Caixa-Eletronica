@@ -11,13 +11,12 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import javax.imageio.IIOException;
 import javafx.event.ActionEvent;
 import java.io.IOException;
 
 public class PageDeposito {
     @FXML
-    Conta contanova;
+    Conta contaNova;
     @FXML
     Button btnDepositar;
     @FXML
@@ -29,7 +28,7 @@ public class PageDeposito {
 
     @FXML
     public void contaLogado(Conta conta){
-        contanova = conta;
+        contaNova = conta;
     }
 
     @FXML
@@ -41,7 +40,7 @@ public class PageDeposito {
             Stage stage = (Stage) linkHome.getScene().getWindow();
 
             MainController pageController = loader.getController();
-            pageController.contaLogado(contanova);
+            pageController.contaLogado(contaNova);
 
             stage.setScene(scene);
             stage.show();
@@ -53,13 +52,16 @@ public class PageDeposito {
     public void depositar(ActionEvent event) throws IOException {
         try {
             double valor = Double.parseDouble(depositoField.getText());
-            if(valor > 0){
-                contanova.depositar(valor);
-                depositoField.clear();
-                lblMessagem.setText("Deposito efetuado com sucesso!");
+            if(valor < 0){
+                lblMessagem.setText("Digite um valor valido!");
             }
             else {
-                lblMessagem.setText("Digite um valor valido!");
+                if(contaNova.depositar(valor)) {
+                    depositoField.clear();
+                    lblMessagem.setText("Deposito efetuado com sucesso!");
+                }else{
+                    lblMessagem.setText("Ocorreu um erro ao efetuar o deposito");
+                }
             }
         } catch (Exception ex){
             lblMessagem.setText("Ocorreu um erro, tente novamente");

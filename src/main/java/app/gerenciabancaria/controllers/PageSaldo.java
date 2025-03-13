@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 public class PageSaldo {
 
     @FXML
-    Conta contanova;
+    Conta contaNova;
     @FXML
     TextArea saldoArea;
     boolean contaLogado;
@@ -30,7 +30,7 @@ public class PageSaldo {
     @FXML
     public void contaLogado(Conta conta){
         try{
-            contanova = conta;
+            contaNova = conta;
         } catch (NullPointerException e) {
             System.out.println(e);
         } catch (Exception ex) {
@@ -43,7 +43,7 @@ public class PageSaldo {
             if (checkSaldo.isSelected()){
             atulizarSaldo();
         }else {
-                saldoArea.setText("Clique na caixinha para mostrar seu saldo!");
+                saldoArea.setText("Clique na caixinha para ver seu saldo!");
             }
         }catch (Exception e) {
             System.out.println(e);
@@ -53,8 +53,12 @@ public class PageSaldo {
 
     @FXML
     public void atulizarSaldo(){
-        double saldo = contanova.getSaldo();
+        double saldo = contaNova.getSaldo();
+        if (saldo != -1.0){
         saldoArea.setText("Você tem " + saldo + "R$ na sua conta!");
+        }else {
+            saldoArea.setText("Erro ao acessar saldo, tente novamente");
+        }
     }
 
     @FXML
@@ -66,7 +70,7 @@ public class PageSaldo {
             Stage stage = (Stage) homeLink.getScene().getWindow();
 
             MainController pageController = loader.getController();
-            pageController.contaLogado(contanova);
+            pageController.contaLogado(contaNova);
 
             stage.setScene(scene);
             stage.show();
